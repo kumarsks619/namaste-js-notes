@@ -1,0 +1,40 @@
+# JavaScript is SYNCHRONOUS and SINGLE THREADED Language.
+
+# JavaScript is LOOSELY TYPED Language ---> No data-type attached to any variable
+
+# JavaScript is neither compiled nor interpreted Language. It is mixed-up of both (complied + interpreted).
+  JIT (Just In Time) Compilation ---> Complied + Interpreted Language
+  (compilation at run-time when code is being interpreted line-by-line) 
+
+# JavaScript Runtime Environment = JS Engine (contains function call-stack) + various APIs + Event Loop + Callback & Micro-task Queue + Garbage collector
+
+# Everything in JS happens inside EXECUTION CONTEXT:
+    1) Variable Environment ---> Memory Component (key: val)
+    2) Thread of Execution ---> Code Component (code execution)
+
+# Call-Stack maintains the order of execution of Execution Context. When any js file starts executing, the very first Execution Context that
+  goes into the Call-Stack is the Global Execution Context (named "anonymous").
+
+# Functions declared with "function" keyword are hoisted while arrow function DON'T as they behave as normal variables to which 
+  a function is assigned.
+
+# Lexical Environment of an Execution Context ---> It's Local Environment + Lexical Environment of it's parent
+  Lexical Environment of Global Execution Context ---> It's Local Environment + NULL (NO parent)
+
+# "let" and "const" are also hoisted but in different memory scope (called SCRIPT), not in Global memory scope. And this results in error
+  if the SCRIPT hoisted variables are accessed before declaration as they are not present in the global scope.
+  And if they are declared inside a block scope ({}) then they are hoisted inside a different memory scope (called BLOCK).
+
+# var ---> function scope
+  let & const ---> block scope
+
+# First Class Functions
+  The ability of a function to be passed as an argument to other functions, can be returned from other functions and can be assigned 
+  to variables is called First Class Function.
+
+# Event Loop: It's task is to continuously check if the javascript's function call-stack is empty or not and when it finds the stack 
+              to be empty then it pushes the queued callbacks based on priority order into the call-stack to get executed.
+    1) Micro-task Queue (high priority) ---> Callbacks from Promises and DOM mutations
+    2) Callback Queue (low priority) ---> All other callbacks (eg - setTimeout's cb, eventListener's cb)
+
+    NOTE: callbacks are registered and will only execute when the whole program gets executed, even if a callback is triggered in-between.
